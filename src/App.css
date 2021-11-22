@@ -78,6 +78,14 @@ button {
   background: rgb(38, 141, 85);
   margin-bottom: 0;
 }
+.discard-btn {
+  background: rgb(184, 99, 49);
+  margin-right: 1rem;
+  margin-bottom: 0;
+}
+.save-btn {
+  margin-bottom: 0;
+}
 
 .new-form {
   display: flex;
@@ -88,7 +96,7 @@ button {
   border: 2px dashed lightgray;
   padding: 1rem;
 }
-.new-form input {
+.new-form input, .item-input {
   background: none;
   border: none;
   border-bottom: 2px solid rgb(200, 200, 200);
