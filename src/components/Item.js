@@ -16,6 +16,16 @@ const Item = ({ details, clicked, ind, select, onDelete, editable, edit, editIte
         edit(-1);
     }
 
+    const complete = (checked) => {
+        editItem(ind, {
+            title: details.title,
+            notes: details.notes,
+            date: details.date,
+            completed: checked
+        });
+        edit(-1);
+    }
+
     return (
         
         <div className='item' onClick={!editable ? () => select(clicked ? -1 : ind) : () => {}}>
@@ -24,7 +34,7 @@ const Item = ({ details, clicked, ind, select, onDelete, editable, edit, editIte
                 <>
                     <div className='item-top'>
                         <span className='item-title'> {details.title}</span>
-                        <input onClick={e => e.stopPropagation()} type="checkbox" />
+                        <input onChange={(e) => complete(e.currentTarget.checked)} onClick={e => e.stopPropagation()} checked={details.completed} type="checkbox" />
                     </div>
                     <div className='item-body'>
                     {

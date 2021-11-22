@@ -41,8 +41,22 @@ function App() {
           {add && <NewForm addItem={addItem} close={() => showAdd(false)} /> }
         </div>
         {items.map((item, ind) => (
-          <Item details={item} ind={ind} select={setSelectItem} edit={setEditItem} clicked={ind === selectItem} editable={ind === editItem} onDelete={deleteItem} editItem={changeItem}  />
-        ))}
+            !item.completed && <Item details={item} ind={ind} select={setSelectItem} edit={setEditItem} clicked={ind === selectItem} editable={ind === editItem} onDelete={deleteItem} editItem={changeItem}  />
+          )
+        )}
+
+        {
+          items.filter(item => item.completed).length > 0 && 
+            <div style={{marginTop: '3rem'}}>
+              <span className='title'>Completed</span>
+              {
+                items.map((item, ind) => (
+                    item.completed && <Item details={item} ind={ind} select={setSelectItem} edit={setEditItem} clicked={ind === selectItem} editable={ind === editItem} onDelete={deleteItem} editItem={changeItem}  />
+                  ) 
+                )
+              }             
+            </div>
+        }
 
       </div>
     </div>
