@@ -1,6 +1,6 @@
 
 
-const Item = ({ details, clicked, ind, select }) => {
+const Item = ({ details, clicked, ind, select, onDelete }) => {
     const splitNotes = details.notes.split('\n')[0];
     return (
         <div className='item' onClick={() => select(clicked ? -1 : ind)}>
@@ -16,7 +16,7 @@ const Item = ({ details, clicked, ind, select }) => {
                                 <span className='item-notes-full'>{details.notes}</span>
                                 {details.date && <span className='item-notes-full'>Due {details.date}</span>}
                                 <div style={{marginTop: '0.5rem'}}>
-                                    <button className='delete-btn'>Delete Item</button>
+                                    <button className='delete-btn' onClick={() => onDelete(ind)}>Delete Item</button>
                                     <button className='edit-btn'>Edit Item</button>
                                 </div>
                             </>

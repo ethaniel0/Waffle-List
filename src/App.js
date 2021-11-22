@@ -24,6 +24,9 @@ function App() {
   const addItem = (item) => {
     editItems([...items, item]);
   }
+  const deleteItem = (index) => {
+    editItems(items.filter(i => i !== items[index]));
+  }
 
   return (
     <div className="App">
@@ -34,7 +37,7 @@ function App() {
           {add && <NewForm addItem={addItem} close={() => showAdd(false)} /> }
         </div>
         {items.map((item, ind) => (
-          <Item details={item} ind={ind} select={setSelectItem} clicked={ind === selectItem}  />
+          <Item details={item} ind={ind} select={setSelectItem} clicked={ind === selectItem} onDelete={deleteItem}  />
         ))}
 
       </div>
