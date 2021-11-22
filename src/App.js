@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 function App() {
   const [add, showAdd] = useState(false);
+  const [selectItem, setSelectItem] = useState(-1);
   const [items, editItems] = useState([
     {
       title: "Something to do",
@@ -32,8 +33,8 @@ function App() {
           <div style={{textAlign: 'right'}}><button onClick={() => showAdd(!add)} className='new-btn'>New Item</button></div>
           {add && <NewForm addItem={addItem} close={() => showAdd(false)} /> }
         </div>
-        {items.map(item => (
-          <Item details={item}  />
+        {items.map((item, ind) => (
+          <Item details={item} ind={ind} select={setSelectItem} clicked={ind === selectItem}  />
         ))}
 
       </div>
